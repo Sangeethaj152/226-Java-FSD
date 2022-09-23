@@ -1,0 +1,47 @@
+<p>Print JSON data</p>
+ <br>
+
+ <table class="table-border-striiped table bodered" >
+<thead>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Available</th>
+        <th>Ratings</th>
+    </tr>
+</thead>
+
+<tbody>
+    <!--NgDirective eg: *ngFor-->
+    <tr *ngFor="let p of products">
+        
+        
+        <td [class.inStock]="true">{{p.name}}</td>
+        <td [style.font-weight]="we">{{p.price}}</td>
+        <td>{{p.available}}</td>
+        <td>{{p.ratings}}</td>
+        
+    </tr>
+</tbody>
+ </table>
+ <h2>Let's Bind the data from source to view using Interpolation</h2>
+ <hr>
+
+
+<p>{{name}}</p>
+
+
+<!--Property Bindings-->
+
+<h2>Let's Bind the data from source to view using property Binding: [] : bind the data with attribute</h2>
+
+<a [href]="url">Connect To Google</a>
+
+
+<div class="container">
+    <button class="btn btn-primary" (click)="show()">Show Div</button>
+
+    <div *ngIf="flag" style="background-color: rgb(173, 240, 38);">
+        This is My Div <hr> You Have Successfully Implememneted EVENT BINDING
+    </div>
+</div>
