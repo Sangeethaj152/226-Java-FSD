@@ -1,79 +1,28 @@
-import { NgModule } from '@angular/core'
-import { BrowserModule } from '@angular/platform-browser'
-import { RouterModule, ActivatedRouteSnapshot } from '@angular/router'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { SigninComponent } from './signin/signin.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import{ReactiveFormsModule} from'@angular/forms';
+import {FormsModule} from '@angular/forms';
 
-import {
-  EventsListComponent,
-  EventThumbnailComponent,
-  EventService,
-  EventDetailsComponent,
-  CreateEventComponent,
-  EventListResolver,
-  CreateSessionComponent,
-  SessionListComponent,
-  DurationPipe,
-  UpvoteComponent,
-  VoterService,
-  LocationValidator,
-  EventResolver
-} from './events/index'
-import { EventsAppComponent } from './events-app.component'
-import { NavBarComponent } from './nav/nav-bar.component'
-import { JQ_TOKEN, TOASTR_TOKEN, Toastr, CollapsibleWellComponent, SimpleModalComponent} from './common/index';
-import { appRoutes } from './routes'
-import { Error404Component } from './errors/404.component'
-import { AuthService } from './user/auth.service'
-import { ModalTriggerDirective } from './common/modalTrigger.directive';
-
-let toastr:Toastr = window['toastr'];
-let jQuery = window['$'];
 
 @NgModule({
+  declarations: [
+    AppComponent,
+    SigninComponent,
+    DashboardComponent
+  ],
   imports: [
     BrowserModule,
-    FormsModule,
+    AppRoutingModule,
+    HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    FormsModule
   ],
-  declarations: [
-    EventsAppComponent,
-    EventsListComponent,
-    EventThumbnailComponent,
-    EventDetailsComponent,
-    NavBarComponent,
-    CreateEventComponent,
-    Error404Component,
-    CreateSessionComponent,
-    SessionListComponent,
-    CollapsibleWellComponent,
-    SimpleModalComponent,
-    UpvoteComponent,
-    ModalTriggerDirective,
-    LocationValidator,
-    DurationPipe
-  ],
-  providers: [
-    EventService, 
-    { provide: TOASTR_TOKEN, useValue: toastr },
-    { provide: JQ_TOKEN, useValue: jQuery },
-    EventResolver,
-    EventListResolver,
-    VoterService,
-    AuthService,
-    { 
-      provide: 'canDeactivateCreateEvent', 
-      useValue: checkDirtyState 
-    }
-  ],
-  bootstrap: [EventsAppComponent]
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
-
-export function checkDirtyState(component:CreateEventComponent) {
-  if (component.isDirty)
-    return window.confirm('You have not saved this event, do you really want to cancel?')
-  return true
-}
+export class AppModule { }

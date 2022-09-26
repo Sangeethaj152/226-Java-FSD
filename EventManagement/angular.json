@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Event-management-app": {
+    "EventManagement": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/event-management-app",
+            "outputPath": "dist/event-management",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Event-management-app:build:production"
+              "browserTarget": "EventManagement:build:production"
             },
             "development": {
-              "browserTarget": "Event-management-app:build:development"
+              "browserTarget": "EventManagement:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Event-management-app:build"
+            "browserTarget": "EventManagement:build"
           }
         },
         "test": {
@@ -90,22 +90,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/bootstrap/dist/css/boostrap.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.css"
-
+              "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/popper.js/dist/popper.min.js"
-            ]
+            "scripts": []
           }
         }
       }
     }
   },
   "cli": {
-    "analytics": "40359c9a-07ce-4367-8072-c379a5b83ee5"
+    "analytics": false
   }
 }
